@@ -6,7 +6,6 @@ public class Main
         Scanner sc=new Scanner(System.in);
         System.out.print("Enter no. of rows:");
         int n=sc.nextInt();
-        int x=65;
         for(int i=1;i<=n;i++)
         {
             for(int j=1;j<=n-i;j++)
