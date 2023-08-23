@@ -15,6 +15,7 @@ public class MainA
             x=b;
         else 
             x=c;
+        //int max=(a>b && a>c)?a:(b>c)?b:c;
         
         System.out.println("Greatest number:"+x);
         
