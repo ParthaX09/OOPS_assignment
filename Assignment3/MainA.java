@@ -9,6 +9,8 @@ public class MainA
         int b=sc.nextInt();
         int c=sc.nextInt();
         int max=(a>b && a>c)?a:(b>c)?b:c;
-        System.out.println("Greatest number:"+x);
+        System.out.println("Largest number: "+max);
+
+        sc.close();
      }
 }
