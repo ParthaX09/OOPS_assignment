@@ -8,16 +8,7 @@ public class MainA
         int a=sc.nextInt();
         int b=sc.nextInt();
         int c=sc.nextInt();
-        int x;
-        if(a>b && a>c)
-            x=a;
-        else if(b>a && b>c)
-            x=b;
-        else 
-            x=c;
-        //int max=(a>b && a>c)?a:(b>c)?b:c;
-        
+        int max=(a>b && a>c)?a:(b>c)?b:c;
         System.out.println("Greatest number:"+x);
-        
-    }
+     }
 }
