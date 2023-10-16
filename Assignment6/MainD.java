@@ -7,7 +7,7 @@ class MainD
         int arr[];
         while(true)
         {
-            System.out.println("\n\n----SORTING----");
+            System.out.println("\n\n----SEARCHING----");
             System.out.println("1.Linear Search \n2.Binary Search \nEnter your choice:");
             int ch = sc.nextInt();
             
