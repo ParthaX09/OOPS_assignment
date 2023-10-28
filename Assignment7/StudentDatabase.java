@@ -1,15 +1,32 @@
 import java.util.Scanner;
 
+class DateOfBirth {
+    int day;
+    int month;
+    int year;
+
+    public DateOfBirth(int day, int month, int year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+    }
+
+    @Override
+    public String toString() {
+        return day + "/" + month + "/" + year;
+    }
+}
+
 class Student {
     int id;
     String firstName;
     String middleName;
     String lastName;
     String gender;
-    String dob;
+    DateOfBirth dob;
     int[] marks;
 
-    public Student(int id, String firstName, String middleName, String lastName, String gender, String dob, int[] marks) {
+    public Student(int id, String firstName, String middleName, String lastName, String gender, DateOfBirth dob, int[] marks) {
         this.id = id;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -19,9 +36,21 @@ class Student {
         this.marks = marks;
     }
 
-    
+    public String getFullName() {
+        return firstName + " " + middleName + " " + lastName;
+    }
+
+    public int getTotalMarks() {
+        int total = 0;
+        for (int mark : marks) {
+            total += mark;
+        }
+        return total;
+    }
+
+    @Override
     public String toString() {
-        return "ID: " + id + "\nName: " + firstName + " " + middleName + " " + lastName + "\nGender: " + gender + "\nDOB: " + dob.substring(0,2)+"/"+dob.substring(2,4)+"/"+dob.substring(4,8) + "\nMarks: [English=" + marks[0] + ", Mathematics=" + marks[1] + ", Computer Science=" + marks[2] + "]";
+        return "ID: " + id + "\nName: " + getFullName() + "\nGender: " + gender + "\nDOB: " + dob.toString() + "\nTotal Marks: " + getTotalMarks();
     }
 }
 
@@ -29,43 +58,59 @@ public class StudentDatabase
 {
     public static void main(String[] args) 
     {
-        Scanner sc = new Scanner(System.in);
-
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the number of students: ");
-        int n = sc.nextInt();
-        sc.nextLine(); 
+        int n = scanner.nextInt();
 
         Student[] students = new Student[n];
 
-        for (int i = 0; i < n; i++) 
-        {
-            System.out.println("\nEnter details for student " + (i + 1) + ":");
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter details for Student " + (i + 1) + ":");
             System.out.print("ID: ");
-            int id = sc.nextInt();
-            sc.nextLine();
+            int id = scanner.nextInt();
             System.out.print("First Name: ");
-            String firstName = sc.nextLine();
+            String firstName = scanner.next();
             System.out.print("Middle Name: ");
-            String middleName = sc.nextLine();
+            String middleName = scanner.next();
             System.out.print("Last Name: ");
-            String lastName = sc.nextLine();
+            String lastName = scanner.next();
             System.out.print("Gender: ");
-            String gender = sc.nextLine();
-            System.out.print("Date of Birth (DD/MM/YYYY): ");
-            String dob = sc.nextLine();
-            System.out.print("Marks in English, Mathematics, Computer Science (space-separated): ");
+            String gender = scanner.next();
+            System.out.print("Date of Birth (day month year): ");
+            int day = scanner.nextInt();
+            int month = scanner.nextInt();
+            int year = scanner.nextInt();
+            DateOfBirth dob = new DateOfBirth(day, month, year);
             int[] marks = new int[3];
-            for (int j = 0; j < 3; j++) 
-                marks[j] = sc.nextInt();
-
+            System.out.print("English Marks: ");
+            marks[0] = scanner.nextInt();
+            System.out.print("Mathematics Marks: ");
+            marks[1] = scanner.nextInt();
+            System.out.print("Computer Science Marks: ");
+            marks[2] = scanner.nextInt();
 
             students[i] = new Student(id, firstName, middleName, lastName, gender, dob, marks);
         }
 
-        System.out.println("\nStudent Database:");
-        for (Student student : students) 
-            System.out.println("\n" + student);
+        // Search for a student by ID or name
+        System.out.print("Enter ID or name to search: ");
+        String searchKey = scanner.next();
 
-        sc.close();
+        boolean found = false;
+
+        for (Student student : students) {
+            if (searchKey.equalsIgnoreCase(String.valueOf(student.id)) || searchKey.equalsIgnoreCase(student.getFullName())) {
+                System.out.println("Student found:\n" + student);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) 
+        {
+            System.out.println("Student not found.");
+        }
+
+        scanner.close();
     }
 }
