@@ -1,44 +1,38 @@
 import java.util.Scanner;
 
-class NonFibonacciSeries 
+class NonFibonacciCalculator 
 {
-    public void display(int n) 
+    public void Fibo(int a, int b, int n) 
     {
-        int count = 0;
-        int num = 1;
-
-        while (count < n) {
-            if (!isFibonacci(num)) {
-                System.out.print(num + " ");
-                count++;
+        if (n > 0) 
+        {
+            int nextTerm = a + b;
+            for (int i = b + 1; i < nextTerm; i++)
+            {
+                if (n <= 0) 
+                    break; 
+                
+                System.out.print(i + " ");
+                n--;
             }
-            num++;
+            Fibo(b, nextTerm, n);
         }
-    }
-
-    public boolean isFibonacci(int num) 
-    {
-        return isPerfectSquare(5 * num * num + 4) || isPerfectSquare(5 * num * num - 4);
-    }
-
-    public boolean isPerfectSquare(int x) 
-    {
-        int sqrt = (int) Math.sqrt(x);
-        return sqrt * sqrt == x;
     }
 }
 
-public class NonFibonacci extends NonFibonacciSeries 
+
+public class NonFibonacci 
 {
     public static void main(String[] args) 
     {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the value of n: ");
+        System.out.print("Enter no. of terms: ");
         int n = sc.nextInt();
-        sc.close();
 
-        NonFibonacci nf = new NonFibonacci();
-        System.out.println("First " + n + " non-Fibonacci terms:");
-        nf.display(n);
+        System.out.println("First " + n + " Non-Fibonacci terms:");
+        NonFibonacciCalculator obj = new NonFibonacciCalculator();
+        obj.Fibo(0, 1, n);
+        
+        sc.close();
     }
 }
