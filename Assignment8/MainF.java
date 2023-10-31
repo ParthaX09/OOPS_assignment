@@ -24,7 +24,7 @@ class AnimalVehicle implements Animal, Vehicle
     }
 }
 
-public class Main 
+public class MainF 
 {
     public static void main(String[] args) 
     {
