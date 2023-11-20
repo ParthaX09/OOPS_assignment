@@ -34,7 +34,7 @@ class Triangle extends TwoDFigure {
     }
 }
 
-public class assg8c {
+public class MainC {
     public static void main(String[] args) {
         TwoDFigure rectangle = new Rectangle(5, 4);
         TwoDFigure triangle = new Triangle(6, 8);
