@@ -1,45 +1,28 @@
 abstract class TwoDFigure 
 {
-    double dimension1;
-    double dimension2;
-
-    public TwoDFigure(double d1, double d2)
-    {
-        dimension1 = d1;
-        dimension2 = d2;
-    }
-
-    public abstract double calculateArea();
+    public abstract double calculateArea(double d1, double d2);
 }
 
 class Rectangle extends TwoDFigure {
-    public Rectangle(double length, double width) {
-        super(length, width);
-    }
-
     @Override
-    public double calculateArea() {
-        return dimension1 * dimension2;
+    public double calculateArea(double d1, double d2) {
+        return d1 * d2;
     }
 }
 
 class Triangle extends TwoDFigure {
-    public Triangle(double base, double height) {
-        super(base, height);
-    }
-
     @Override
-    public double calculateArea() {
-        return 0.5 * dimension1 * dimension2;
+    public double calculateArea(double d1, double d2) {
+        return 0.5 * d1 * d2;
     }
 }
 
 public class MainC {
     public static void main(String[] args) {
-        TwoDFigure rectangle = new Rectangle(5, 4);
-        TwoDFigure triangle = new Triangle(6, 8);
+        TwoDFigure rec = new Rectangle();
+        TwoDFigure tr = new Triangle();
 
-        System.out.println("Area of Rectangle: " + rectangle.calculateArea());
-        System.out.println("Area of Triangle: " + triangle.calculateArea());
-    }
+        System.out.println("Area of Rectangle: " + rec.calculateArea(5,4));
+        System.out.println("Area of Triangle: " + tr.calculateArea(6,8));
+    }
 }
