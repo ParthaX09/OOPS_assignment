@@ -1,40 +1,39 @@
 abstract class Number 
 {
-    protected int value;
-
-    public Number(int value) 
-    {
-        this.value = value;
-    }
-
-    public abstract void displayNum();
+    public abstract void displayNum(int value);
 }
 
 class HexNum extends Number 
 {
-    public HexNum(int value) 
-    {
-        super(value);
-    }
-
     @Override
-    public void displayNum() 
+    public void displayNum(int value) 
     {
-        System.out.println("Hexadecimal: " + Integer.toHexString(value));
+        char arr[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+        String s="";
+        while(value > 0)
+        {
+            s =  arr[value%16] + s;
+            value/=16;
+        }
+        System.out.println("Hexadecimal: " + s);
+
     }
 }
 
 class OctalNum extends Number 
 {
-    public OctalNum(int value) 
-    {
-        super(value);
-    }
-
     @Override
-    public void displayNum() 
+    public void displayNum(int value) 
     {
-        System.out.println("Octal: " + Integer.toOctalString(value));
+        char arr[] = {'0','1','2','3','4','5','6','7'};
+        String s="";
+        while(value > 0)
+        {
+            s =  arr[value%8] + s;
+            value/=8;
+        }
+        System.out.println("Hexadecimal: " + s);
+
     }
 }
 
@@ -42,11 +41,11 @@ public class MainB
 {
     public static void main(String[] args) 
     {
-        Number num1 = new HexNum(255);  
-        Number num2 = new OctalNum(63);  
+        Number ob;
+        ob = new HexNum();
+        ob.displayNum(10);
         
-
-        num1.displayNum();
-        num2.displayNum();
+        ob = new OctalNum();
+        ob.displayNum(8);
     }
 }
