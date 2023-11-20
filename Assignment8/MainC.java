@@ -1,52 +1,45 @@
-abstract class Number 
+abstract class TwoDFigure 
 {
-    protected int value;
+    double dimension1;
+    double dimension2;
 
-    public Number(int value) 
+    public TwoDFigure(double d1, double d2)
     {
-        this.value = value;
+        dimension1 = d1;
+        dimension2 = d2;
     }
 
-    public abstract void displayNum();
+    public abstract double calculateArea();
 }
 
-class HexNum extends Number 
-{
-    public HexNum(int value) 
-    {
-        super(value);
+class Rectangle extends TwoDFigure {
+    public Rectangle(double length, double width) {
+        super(length, width);
     }
 
     @Override
-    public void displayNum() 
-    {
-        System.out.println("Hexadecimal: " + Integer.toHexString(value));
+    public double calculateArea() {
+        return dimension1 * dimension2;
     }
 }
 
-class OctalNum extends Number 
-{
-    public OctalNum(int value) 
-    {
-        super(value);
+class Triangle extends TwoDFigure {
+    public Triangle(double base, double height) {
+        super(base, height);
     }
 
     @Override
-    public void displayNum() 
-    {
-        System.out.println("Octal: " + Integer.toOctalString(value));
+    public double calculateArea() {
+        return 0.5 * dimension1 * dimension2;
     }
 }
 
-public class MainC 
-{
-    public static void main(String[] args) 
-    {
-        Number num1 = new HexNum(255);  
-        Number num2 = new OctalNum(63);  
-        
+public class assg8c {
+    public static void main(String[] args) {
+        TwoDFigure rectangle = new Rectangle(5, 4);
+        TwoDFigure triangle = new Triangle(6, 8);
 
-        num1.displayNum();
-        num2.displayNum();
-    }
+        System.out.println("Area of Rectangle: " + rectangle.calculateArea());
+        System.out.println("Area of Triangle: " + triangle.calculateArea());
+    }
 }
