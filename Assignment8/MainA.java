@@ -1,11 +1,11 @@
-class Employee 
+abstract class Employee 
 {
     int EID;
     String Name;
     double Basic;
     String City;
 
-    public Employee(int EID, String Name, double Basic, String City) 
+    public void details(int EID, String Name, double Basic, String City) 
     {
         this.EID = EID;
         this.Name = Name;
@@ -21,17 +21,15 @@ class Employee
         System.out.println("City: " + City);
     }
 
-    public double calculateGrossSalary()
-    {
-        return 0; 
-    }
+    public abstract double calculateGrossSalary();
+    
 }
 
 class Company1 extends Employee 
 {
     public Company1(int EID, String Name, double Basic, String City) 
     {
-        super(EID, Name, Basic, City);
+        details(EID, Name, Basic, City);
     }
 
     @Override
@@ -49,7 +47,7 @@ class Company2 extends Employee
 {
     public Company2(int EID, String Name, double Basic, String City) 
     {
-        super(EID, Name, Basic, City);
+        details(EID, Name, Basic, City);
     }
 
     @Override
@@ -63,7 +61,7 @@ class Company2 extends Employee
     }
 }
 
-public class Main 
+public class MainA 
 {
     public static void main(String[] args) 
     {
