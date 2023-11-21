@@ -1,6 +1,6 @@
 abstract class GeometricObject {
-    private String color;
-    private double weight;
+    String color;
+    double weight;
 
     public GeometricObject() {
         this.color = "White";
@@ -23,9 +23,7 @@ abstract class GeometricObject {
 
 class Triangle extends GeometricObject 
 {
-    private double side1;
-    private double side2;
-    private double side3;
+    double side1, side2, side3;
 
     public Triangle(double side1, double side2, double side3) 
     {
