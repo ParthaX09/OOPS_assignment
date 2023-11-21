@@ -1,58 +1,34 @@
 abstract class Shape 
 {
-    protected int length;
-    protected int width;
-
-    public Shape(int length, int width) 
-    {
-        this.length = length;
-        this.width = width;
-    }
-
-    public abstract void printArea();
+    public abstract void printArea(int l, int w);
 }
 
 class Rectangle extends Shape 
 {
-    public Rectangle(int length, int width) 
-    {
-        super(length, width);
-    }
-
     @Override
-    public void printArea() 
+    public void printArea(int l, int w)
     {
-        int area = length * width;
+        int area = l * w;
         System.out.println("Area of Rectangle: " + area);
     }
 }
 
 class Triangle extends Shape 
 {
-    public Triangle(int length, int width) 
-    {
-        super(length, width);
-    }
-
     @Override
-    public void printArea() 
+    public void printArea(int l, int w) 
     {
-        double area = 0.5 * length * width;
+        double area = 0.5 * l * w;
         System.out.println("Area of Triangle: " + area);
     }
 }
 
 class Circle extends Shape 
 {
-    public Circle(int radius) 
-    {
-        super(radius, 0);
-    }
-
     @Override
-    public void printArea() 
+    public void printArea(int l, int w) 
     {
-        double area = Math.PI * length * length;
+        double area = 3.142 * l * w;
         System.out.println("Area of Circle: " + area);
     }
 }
@@ -61,12 +37,14 @@ public class MainE
 {
     public static void main(String[] args) 
     {
-        Shape rectangle = new Rectangle(4, 5);
-        Shape triangle = new Triangle(3, 6);
-        Shape circle = new Circle(4);
-
-        rectangle.printArea();
-        triangle.printArea();
-        circle.printArea();
+        Shape ob;
+        ob = new Rectangle();
+        ob.printArea(4, 5);
+        
+        ob = new Triangle();
+        ob.printArea(3, 6);
+        
+        ob = new Circle();
+        ob.printArea(4,4);
     }
 }
